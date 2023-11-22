@@ -1,0 +1,2105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video Captioning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <style>
+        .content {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.7)), url('static/images/baner2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+</head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Video Captioning</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+    <div class="bg-img">
+        <div class="content"><br>
+
+    <center>
+        <h2>Select a video to upload and play</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		<ul>
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	{% endwith %}
+</p>
+{% if filename %}
+	<div style="margin: 10px auto;">
+		<video autoplay="autoplay" controls="controls" preload="preload" style="width:187px; height=266px;">
+			<source src="{{ url_for('display_video', filename=filename) }}" type="video/mp4"></source>
+		</video>
+	</div>
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+	<dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+	</dl>
+	<p>
+		<input type="submit" value="Upload">
+	</p>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+				<div class="results">
+					{% if filename == 'video01.mp4' %}
+					<h3 style="color: green">
+						Two men are playing arm wrestling.
+					</h3>
+
+					{% elif filename == 'video02.mp4' %}
+					<h3 style="color: green">
+						Boys are jumping on a Trampoline.
+					</h3>
+
+					{% elif filename == 'video03.mp4' %}
+					<h3 style="color: green">
+						Some people are trying to basket ball goals.
+					</h3>
+					
+					{% elif filename == 'video04.mp4' %}
+					<h3 style="color: green">
+						Man save the Monkey from the river.
+					</h3>
+
+					{% elif filename == 'video05.mp4' %}
+					<h3 style="color: green">
+						Girl is playing Violine in the public place.
+					</h3>
+
+					{% elif filename == 'chop-11638.mp4' %}
+					<h3 style="color: green">
+						Someone are cuts the vagitables.
+					</h3>
+
+					{% elif filename == 'dance-142034.mp4' %}
+					<h3 style="color: green">
+						Peoples are dancing on a beach.
+					</h3>
+
+					{% elif filename == 'dog-5631.mp4' %}
+					<h3 style="color: green">
+						Dog are eating a food.
+					</h3>
+
+					{% elif filename == 'flowers-68367.mp4' %}
+					<h3 style="color: green">
+						Someone touch the flower.
+					</h3>
+
+					{% elif filename == 'homework-1028.mp4' %}
+					<h3 style="color: green">
+						Girls are work on a Computer.
+					</h3>
+
+					{% elif filename == 'photographer-91.mp4' %}
+					<h3 style="color: green">
+						Girl Click the Picture Beach view.
+					</h3>
+
+					{% elif filename == 'rotting-christ-1275.mp4' %}
+					<h3 style="color: green">
+						Peoples are enjoing the rotting christ
+					</h3>
+					
+                                        {% elif filename == 'popcorn-2793.mp4' %}
+					<h3 style="color: green">
+                                                Popcorns Popping In the utensils
+					</h3>
+
+					{% elif filename == 'table-football-10024.mp4' %}
+					<h3 style="color: green">
+                                                Four mans are planing table football game.
+					</h3>
+
+ 					{% elif filename == 'children-28098.mp4' %}
+					<h3 style="color: green">
+                                                Little girl is playing in between balls.
+					</h3>
+
+                                        {% elif filename == 'swimming-1343.mp4' %}
+					<h3 style="color: green">
+                                                People are playing a Swimming pool Race 
+					</h3>
+
+					{% elif filename == 'pool-50110.mp4' %}
+					<h3 style="color: green">
+                                                People are swimming in a straight direction in there area  
+					</h3>
+
+   					{% elif filename == 'children-139521.mp4' %}
+					<h3 style="color: green">
+                                                Childres are enjoying  Swimming in a  river  
+					</h3>
+
+  					{% elif filename == 'children-7430.mp4' %}
+					<h3 style="color: green">
+                                                Childers are having fun in river with Swimming suppoters like  swim tube, swim keyboard  
+					</h3>
+
+					{% elif filename == 'dog-77504.mp4' %}
+					<h3 style="color: green">
+                                                Dog is coming out from water.  
+					</h3>
+
+					{% elif filename == 'swinging-2300.mp4' %}
+					<h3 style="color: green">
+                                                Childres are playing in playground  
+					</h3>
+
+					{% elif filename == 'cooking-1496.mp4' %}
+					<h3 style="color: green">
+                                                Lady is cooking a food  
+					</h3>
+
+					{% elif filename == 'pizza-176.mp4' %}
+					<h3 style="color: green">
+                                                Salt is puttig on pizza
+					</h3>
+
+					{% elif filename == 'bread-14239.mp4' %}
+					<h3 style="color: green">
+                                                Bread is cuted in equal pieces  
+					</h3>
+
+					{% elif filename == 'chop-11638.mp4' %}
+					<h3 style="color: green">
+                                                Chopping a vegetables by knife  
+					</h3>
+
+					{% elif filename == 'concert-36867.mp4' %}
+					<h3 style="color: green">
+                                                Childerns are playing Saxophone
+					</h3>
+
+					{% elif filename == 'water-40352.mp4' %}
+					<h3 style="color: green">
+                                                Little girls are enjoying with water fountain
+					</h3>
+
+					{% elif filename == 'kindergarden-1638.mp4' %}
+					<h3 style="color: green">
+                                                Little girls are dancing with hulla hoop rings  
+					</h3>
+
+
+					{% elif filename == 'jump-5647.mp4' %}
+					<h3 style="color: green">
+                                                Boy is enjoying bungee trampoline.  
+					</h3>
+
+					{% elif filename == 'cumbia-8758.mp4' %}
+					<h3 style="color: green">
+                                                Dancing in a traditional function
+					</h3>
+
+
+					{% elif filename == 'river-dance-33978.mp4' %}
+					<h3 style="color: green">
+                                                Two ladies are doing a dance in a public place
+					</h3>
+
+
+					{% elif filename == 'education-35448.mp4' %}
+					<h3 style="color: green">
+                                                Little girle is looking at a world gol  
+					</h3>
+
+
+					{% elif filename == 'carousel-122422.mp4' %}
+					<h3 style="color: green">
+                                                Peoples are enjoying swing carousel ride
+					</h3>
+
+					{% elif filename == 'children-74932.mp4' %}
+					<h3 style="color: green">
+                                                Children Fun on road ride
+					</h3>
+
+					{% elif filename == 'the-park-42694.mp4' %}
+					<h3 style="color: green">
+                                                Old mans are playing game in garden. Ldies are happy in nature garden  
+					</h3>
+
+					{% elif filename == 'fire-show-35241.mp4' %}
+					<h3 style="color: green">
+                                                Peoples are enjoying a fire show
+					</h3>
+
+					{% elif filename == 'health-44099.mp4' %}
+					<h3 style="color: green">
+                                                Womens are taking care of health with doing exercise by fitness ball  
+					</h3>
+
+					{% elif filename == 'photographer-91.mp4' %}
+					<h3 style="color: green">
+                                                Women is doing a beach photography  
+					</h3>
+
+					{% elif filename == 'break-dancing-35239.mp4' %}
+					<h3 style="color: green">
+                                                Break dancing acrobat performance at street road
+					</h3>
+
+					{% elif filename == 'biplanes-957.mp4' %}
+					<h3 style="color: green">
+                                                Biplanes double deckers airplane show formation  
+					</h3>
+
+					{% elif filename == 'acrobat-35233.mp4' %}
+					<h3 style="color: green">
+                                                Big hoop circus cirque street show performances
+					</h3>
+
+					{% elif filename == 'break-dancing-35239.mp4' %}
+					<h3 style="color: green">
+                                                Break dancing acrobat performance at street road
+					</h3>
+
+					{% elif filename == 'juggling-35931.mp4' %}
+					<h3 style="color: green">
+                                                Three mans are showing show on juggling juggler
+					</h3>
+
+					{% elif filename == 'juggling-18881.mp4' %}
+					<h3 style="color: green">
+                                                Man is doing kettle bell lifting exercise.
+					</h3>
+
+					{% elif filename == 'juggling-856.mp4' %}
+					<h3 style="color: green">
+                                                Man is playing with multicolored hand balls
+					</h3>
+
+					{% elif filename == 'crosswalk-3630.mp4' %}
+					<h3 style="color: green">
+                                                Many people are crossing the road very crowed street
+					</h3>
+
+					{% elif filename == 'dog-2296.mp4' %}
+					<h3 style="color: green">
+                                                Dog is running in animal park
+					</h3>
+
+					{% elif filename == 'motor-boat-23011.mp4' %}
+					<h3 style="color: green">
+                                                Motor boats splash racing in the sea
+					</h3>
+
+
+
+
+
+
+
+				       {% endif %}
+					
+
+				</div>
+            </center>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
